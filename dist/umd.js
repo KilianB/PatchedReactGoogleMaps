@@ -535,7 +535,7 @@
 	}
 
 	function isGoogleFontStyle(element) {
-	    console.log("Intersect Goolge Font Application", "Check Element", element);
+	    console.log("Intersect Goolge V2 Font Application", "Check Element", element);
 	    // 'Roboto' or 'Google Sans Text' font download
 	    const href = element.href;
 	    if (href && (href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0 ||

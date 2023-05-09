@@ -1,6 +1,6 @@
 function isGoogleFontStyle(element: HTMLElement): boolean {
 
-  console.log("Intersect Goolge Font Application","Check Element", element);
+  console.log("Intersect Goolge V2 Font Application","Check Element", element);
 
   // 'Roboto' or 'Google Sans Text' font download
   const href = (element as HTMLLinkElement).href;
