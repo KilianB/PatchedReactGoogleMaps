@@ -548,7 +548,12 @@ function isGoogleFontStyle(element) {
         // @ts-ignore
         !element.styleSheet &&
         !element.innerHTML) {
-        console.log("Blocked empty style element");
+        if (Object.keys(element.dataset).length > 0) {
+            console.log("Do not block due to present data attribute");
+        }
+        else {
+            console.log("Blocked empty style element");
+        }
         return true;
     }
     return false;

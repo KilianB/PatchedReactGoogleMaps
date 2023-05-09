@@ -43,9 +43,15 @@ function isGoogleFontStyle(element: HTMLElement): boolean {
     element.tagName.toLowerCase() === 'style' &&
     // @ts-ignore
     !element.styleSheet &&
-    !element.innerHTML
+    !element.innerHTML 
   ) {
-    console.log("Blocked empty style element");
+
+    if( Object.keys(element.dataset).length > 0){
+      console.log("Do not block due to present data attribute");
+    }else{
+      console.log("Blocked empty style element");
+    }
+
     return true
   }
 
