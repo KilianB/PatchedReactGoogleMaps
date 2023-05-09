@@ -47,9 +47,9 @@ function isGoogleFontStyle(element: HTMLElement): boolean {
   ) {
 
     if( Object.keys(element.dataset).length > 0){
-      console.log("Do not block due to present data attribute");
+      console.log("Do not block due to present data attribute 1", element.dataset);
     }else{
-      console.log("Blocked empty style element");
+      console.log("Blocked empty style element 1", element.dataset);
     }
 
     return true
