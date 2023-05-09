@@ -1,16 +1,13 @@
 function isGoogleFontStyle(element: HTMLElement): boolean {
-
-  console.log("Intersect Goolge V2 Font Application","Check Element", element);
-
   // 'Roboto' or 'Google Sans Text' font download
-  const href = (element as HTMLLinkElement).href;
+  const href = (element as HTMLLinkElement).href
   if (
-    href && (
-      href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0 ||
-      href.indexOf('https://fonts.googleapis.com/css?family=Google+Sans+Text') === 0
-    )
+    href &&
+    (href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0 ||
+      href.indexOf(
+        'https://fonts.googleapis.com/css?family=Google+Sans+Text'
+      ) === 0)
   ) {
-    console.log("Blocked due to matching url");
     return true
   }
   // font style elements
@@ -23,8 +20,6 @@ function isGoogleFontStyle(element: HTMLElement): boolean {
     // @ts-ignore
     element.styleSheet.cssText.replace('\r\n', '').indexOf('.gm-style') === 0
   ) {
-    // @ts-ignore
-    console.log("Blocked due to matching cssText",element.styleSheet.cssText);
     // @ts-ignore
     element.styleSheet.cssText = ''
     return true
@@ -43,23 +38,22 @@ function isGoogleFontStyle(element: HTMLElement): boolean {
     element.tagName.toLowerCase() === 'style' &&
     // @ts-ignore
     !element.styleSheet &&
-    !element.innerHTML 
+    !element.innerHTML
   ) {
-
-    if( Object.keys(element.dataset).length > 0){
-      console.log("Do not block due to present data attribute 1", element.dataset);
-    }else{
-      console.log("Blocked empty style element 1", element.dataset);
+    //Do not block style tag from being added as it was a emotion elements
+    if (Object.keys(element.dataset).length > 0) {
+      return false
+    } else {
+      //Blocked style element
+      return true
     }
-
-    return true
   }
 
   return false
 }
 
 // Preventing the Google Maps library from downloading an extra font
-export function preventGoogleFonts (): void {
+export function preventGoogleFonts(): void {
   // we override these methods only for one particular head element
   // default methods for other elements are not affected
   const head = document.getElementsByTagName('head')[0]
